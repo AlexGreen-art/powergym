@@ -1,3 +1,1 @@
-PowerGym — wersja v6.
-
-Poprawki mobilne: menu zamyka się po wyborze sekcji, kotwice uwzględniają sticky header, a zdjęcie hero ma osobne kadrowanie na smartfonach, aby postać nie była obcinana.
+PowerGym v7 — poprawka kotwic. Zmniejszono scroll-margin-top, aby po przejściu do sekcji nie pojawiał się biały pasek pod sticky headerem.
