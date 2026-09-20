@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PowerGym – nowoczesna siłownia z treningiem personalnym i poradnikiem żywienia sportowego.">
+<title>PowerGym – Twoja siłownia, Twój trener, Twoje wyniki</title>
+<style>
+  :root{
+    --accent:#e63946;
+    --accent-dark:#c1121f;
+    --dark:#0f1115;
+    --dark-2:#171a21;
+    --light:#f4f4f6;
+    --text:#333333;
+    --muted:#6b7280;
+    --radius:14px;
+    --shadow:0 10px 30px rgba(0,0,0,.15);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Segoe UI',Arial,sans-serif;color:var(--text);background:#fff;line-height:1.6;overflow-x:hidden;}
+  img{max-width:100%;display:block;}
+  .container{width:min(1100px,92%);margin:0 auto;}
+  h2{font-size:2rem;margin-bottom:.6rem;}
+  .section{padding:70px 0;}
+  .lead{color:var(--muted);max-width:720px;}
+
+  /* ---- header ---- */
+  header{position:sticky;top:0;z-index:50;background:rgba(15,17,21,.95);backdrop-filter:blur(6px);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  .logo{color:#fff;font-weight:800;font-size:1.35rem;letter-spacing:1px;text-decoration:none;}
+  .logo span{color:var(--accent);}
+  .menu{display:flex;gap:26px;list-style:none;}
+  .menu a{color:#e5e7eb;text-decoration:none;font-size:.95rem;transition:color .2s;}
+  .menu a:hover{color:var(--accent);}
+  #burger{display:none;}
+  .burger-label{display:none;color:#fff;font-size:1.8rem;cursor:pointer;line-height:1;}
+
+  /* ---- hero ---- */
+  .hero{position:relative;min-height:560px;display:flex;align-items:center;background:#0b0d10;color:#fff;overflow:hidden;}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,9,12,.94) 0%,rgba(7,9,12,.82) 34%,rgba(7,9,12,.22) 66%,rgba(7,9,12,.08) 100%),url('assets/hero.png') center 22%/cover no-repeat;}
+  .hero .container{position:relative;z-index:1;padding:72px 0;}
+  .hero-copy{max-width:590px;text-align:left;}
+  .hero h1{font-size:clamp(2.5rem,5vw,4.2rem);line-height:1.06;letter-spacing:-1.5px;}
+  .hero h1 span{color:var(--accent);}
+  .hero p{margin:20px 0 30px;max-width:560px;font-size:1.08rem;color:#e5e7eb;}
+  .btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:14px 34px;border-radius:50px;transition:background .2s,transform .2s;}
+  .btn:hover{background:var(--accent-dark);transform:translateY(-2px);}
+  .btn-outline{background:transparent;border:2px solid #fff;margin-left:12px;}
+  .btn-outline:hover{background:#fff;color:var(--dark);}
+
+  /* ---- features ---- */
+  .features{background:var(--light);}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:40px;}
+  .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:30px 26px;transition:transform .25s;}
+  .card:hover{transform:translateY(-6px);}
+  .card .icon{font-size:2.2rem;margin-bottom:12px;}
+  .card h3{margin-bottom:8px;font-size:1.15rem;}
+
+  /* ---- trainer highlight ---- */
+  .trainer{background:var(--dark);color:#fff;}
+  .trainer-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .trainer-grid img{width:100%;height:460px;object-fit:cover;object-position:center;border-radius:var(--radius);box-shadow:var(--shadow);}
+  .trainer h2{color:#fff;}
+  .badge{display:inline-block;background:var(--accent);color:#fff;font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:50px;margin-bottom:16px;}
+  .trainer ul{list-style:none;margin-top:18px;}
+  .trainer li{padding:8px 0 8px 30px;position:relative;color:#d1d5db;}
+  .trainer li::before{content:"💪";position:absolute;left:0;}
+
+  /* ---- nutrition ---- */
+  .nutrition-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;}
+  .nutrition-grid img{width:100%;height:500px;object-fit:cover;object-position:center;border-radius:var(--radius);box-shadow:var(--shadow);}
+  .tips{margin-top:22px;}
+  .tip{background:var(--light);border-left:4px solid var(--accent);border-radius:8px;padding:16px 18px;margin-bottom:14px;}
+  .tip strong{display:block;margin-bottom:4px;}
+
+  /* ---- pricing ---- */
+  .pricing{background:var(--light);}
+  .price-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:40px;}
+  .price-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:34px 26px;text-align:center;position:relative;}
+  .price-card.featured{border:3px solid var(--accent);transform:scale(1.04);}
+  .price-card .tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:.75rem;font-weight:700;padding:5px 16px;border-radius:50px;letter-spacing:1px;text-transform:uppercase;}
+  .price-card h3{font-size:1.2rem;}
+  .price{font-size:2.4rem;font-weight:800;color:var(--accent);margin:12px 0 4px;}
+  .price small{font-size:1rem;color:var(--muted);font-weight:400;}
+  .price-card ul{list-style:none;margin:18px 0 24px;color:var(--muted);}
+  .price-card li{padding:6px 0;border-bottom:1px solid #eee;}
+
+  /* ---- contact ---- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+  form input,form textarea,form select{width:100%;padding:13px 15px;margin-bottom:14px;border:1px solid #d1d5db;border-radius:10px;font:inherit;}
+  form input:focus,form textarea:focus,form select:focus{outline:none;border-color:var(--accent);}
+  .contact-info p{margin-bottom:14px;font-size:1.05rem;}
+  .contact-info strong{color:var(--accent);}
+  .contact-info a{color:inherit;text-decoration:none;}
+  .contact-info a:hover{color:var(--accent);text-decoration:underline;}
+
+  .contact-visual{position:relative;min-height:420px;border-radius:var(--radius);overflow:hidden;background:linear-gradient(90deg,rgba(15,17,21,.92),rgba(15,17,21,.28)),url("assets/trainer.png") center/cover no-repeat;box-shadow:var(--shadow);display:flex;align-items:flex-end;padding:32px;color:#fff;}
+  .contact-visual-box{max-width:390px;}
+  .contact-visual h3{font-size:1.7rem;margin-bottom:10px;}
+  .contact-visual p{color:#e5e7eb;margin-bottom:18px;}
+  .contact-links{display:flex;flex-wrap:wrap;gap:10px;}
+  .contact-links a{display:inline-block;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.3);padding:10px 14px;border-radius:999px;background:rgba(0,0,0,.22);}
+  .contact-links a:hover{border-color:var(--accent);background:var(--accent);}
+
+  footer{background:var(--dark-2);color:#9ca3af;text-align:center;padding:26px 0;font-size:.9rem;}
+
+
+  /* ---- schedule ---- */
+  .schedule{background:#fff;}
+  .schedule-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:30px;}
+  .schedule-today{font-size:.92rem;color:var(--muted);background:var(--light);padding:9px 14px;border-radius:50px;white-space:nowrap;}
+  .schedule-today strong{color:var(--accent);}
+  .schedule-days{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:18px;}
+  .day-tab{border:1px solid #e5e7eb;border-radius:12px;padding:13px 8px;text-align:center;background:#fff;transition:.2s;}
+  .day-tab .day-name{font-size:.78rem;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);font-weight:700;}
+  .day-tab .day-date{font-size:1.25rem;font-weight:800;margin-top:2px;color:var(--dark);}
+  .day-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 8px 20px rgba(230,57,70,.22);}
+  .day-tab.active .day-name,.day-tab.active .day-date{color:#fff;}
+  .schedule-panel{background:var(--dark);border-radius:var(--radius);padding:26px;color:#fff;box-shadow:var(--shadow);}
+  .schedule-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:stretch;}
+  .class-row{display:grid;grid-template-columns:78px minmax(0,1fr) auto;min-height:92px;box-sizing:border-box;align-items:center;gap:14px;padding:16px;background:#1b1f27;border:1px solid #292e38;border-radius:10px;}
+  .class-time{font-weight:800;color:var(--accent);}
+  .class-name{font-weight:700;}
+  .class-meta{font-size:.82rem;color:#9ca3af;margin-top:2px;}
+  .class-level{font-size:.75rem;color:#d1d5db;border:1px solid #414754;border-radius:30px;padding:4px 9px;}
+  .schedule-note{margin-top:16px;color:#9ca3af;font-size:.85rem;}
+
+  /* ---- responsive ---- */
+  @media (max-width:1050px){
+    .nav{position:relative;}
+    .burger-label{display:block;}
+    .menu{position:absolute;top:100%;left:0;right:0;background:var(--dark);flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .3s ease;box-shadow:0 12px 24px rgba(0,0,0,.25);}
+    .menu li{padding:14px 5%;border-top:1px solid #262a33;}
+    #burger:checked ~ .menu{max-height:520px;}
+    .hero{min-height:560px;}
+  }
+  @media (max-width:900px){
+    .schedule-grid{grid-template-columns:1fr;}
+    .contact-visual{min-height:340px;}
+    .cards,.price-cards{grid-template-columns:1fr 1fr;}
+    .schedule-days{grid-template-columns:repeat(4,1fr);}
+    .schedule-grid{grid-template-columns:1fr;}
+    .trainer-grid,.nutrition-grid,.contact-grid{grid-template-columns:1fr;}
+    .trainer-grid img{height:380px;}
+    .nutrition-grid img{height:380px;}
+    .price-card.featured{transform:none;}
+  }
+  @media (max-width:640px){
+    h2{font-size:1.6rem;}
+    .section{padding:50px 0;}
+    .cards,.price-cards{grid-template-columns:1fr;}
+    .schedule-head{display:block;}
+    .schedule-today{display:inline-block;margin-top:12px;}
+    .schedule-days{grid-template-columns:repeat(2,1fr);}
+    .class-row{grid-template-columns:64px 1fr;}
+    .class-level{grid-column:2;justify-self:start;}
+    .hero{min-height:620px;}
+    .hero .container{padding:60px 0;}
+    .hero-copy{max-width:100%;}
+    .hero h1{font-size:clamp(2.25rem,11vw,3.2rem);}
+    .btn-outline{margin-left:0;margin-top:12px;}
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#start">POWER<span>GYM</span></a>
+    <input type="checkbox" id="burger">
+    <label for="burger" class="burger-label">☰</label>
+    <ul class="menu">
+      <li><a href="#start">Start</a></li>
+      <li><a href="#o-nas">O nas</a></li>
+      <li><a href="#trener">Trener personalny</a></li>
+      <li><a href="#grafik">Grafik</a></li>
+      <li><a href="#odzywianie">Odżywianie</a></li>
+      <li><a href="#cennik">Cennik</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero" id="start">
+  <div class="container">
+    <div class="hero-copy">
+      <span class="badge">PowerGym · siła · pasja · efekty</span>
+      <h1>Silniejsza wersja <span>Ciebie</span> czeka.</h1>
+      <p>Nowoczesna siłownia, doświadczeni trenerzy i realne wsparcie na każdym etapie. Trenuj mądrze, zamiast trenować przypadkowo.</p>
+      <a class="btn" href="#kontakt">Umów trening próbny</a>
+      <a class="btn btn-outline" href="#cennik">Zobacz cennik</a>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="o-nas">
+  <div class="container">
+    <h2>Dlaczego PowerGym?</h2>
+    <p class="lead">Ponad 1200 m² przestrzeni do treningu siłowego i cardio, strefa funkcjonalna oraz odnowa biologiczna. Trenujemy tu od 2012 roku – wiemy, co działa.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🏋️</div>
+        <h3>Sprzęt najwyższej klasy</h3>
+        <p>Atlasów, wolne ciężary, hantle do 60 kg i strefa cardio z technologią podłączania smartwatchy.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧑‍🏫</div>
+        <h3>Trenerzy z pasją</h3>
+        <p>Każdy z naszych trenerów ma min. 5 lat doświadczenia i certyfikaty m.in. REPs Polska oraz PZKF.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🥗</div>
+        <h3>Wsparcie żywieniowe</h3>
+        <p>Współpracujemy z dietetykiem sportowym, który ułoży jadłospis dopasowany do Twoich treningów.</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="section schedule" id="grafik">
+  <div class="container">
+    <div class="schedule-head">
+      <div>
+        <span class="badge">Grafik zajęć</span>
+        <h2>Zaplanuj swój trening</h2>
+        <p class="lead">Wybierz dzień, żeby zobaczyć zajęcia. Aktualny dzień jest zaznaczany automatycznie na podstawie daty urządzenia.</p>
+      </div>
+      <div class="schedule-today" id="scheduleToday">Dzisiaj: <strong>—</strong></div>
+    </div>
+
+    <div class="schedule-days" id="scheduleDays" aria-label="Wybór dnia tygodnia">
+      <button class="day-tab" data-day="1" type="button"><div class="day-name">Pon</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="2" type="button"><div class="day-name">Wt</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="3" type="button"><div class="day-name">Śr</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="4" type="button"><div class="day-name">Czw</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="5" type="button"><div class="day-name">Pt</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="6" type="button"><div class="day-name">Sob</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="7" type="button"><div class="day-name">Nd</div><div class="day-date">—</div></button>
+    </div>
+
+    <div class="schedule-panel">
+      <div class="schedule-grid" id="scheduleList"></div>
+      <p class="schedule-note">* Grafik demonstracyjny. Zajęcia są uporządkowane chronologicznie, a dzisiejszy dzień zaznacza się automatycznie.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section trainer" id="trener">
+  <div class="container trainer-grid">
+    <div>
+      <span class="badge">Najważniejsze na siłowni</span>
+      <h2>Trener personalny – Twoja najlepsza inwestycja</h2>
+      <p style="color:#d1d5db;">Trening samodzielny często kończy się płaską stopą albo kontuzją. Dobry trener personalny to nie „wydatek", lecz skrót do wyników:</p>
+      <ul>
+        <li><strong>Technika przede wszystkim</strong> – poprawne wykonanie ćwiczeń chroni stawy i kręgosłup oraz przyspiesza postępy nawet o 30%.</li>
+        <li><strong>Plan szyty na miarę</strong> – trener dobiera obciążenia, zakres powtórzeń i regenerację do Twojego celu: redukcja, masa czy siła.</li>
+        <li><strong>Motywacja i rytm</strong> – umówiony trening to trening, którego nie odwołujesz. Ktoś liczy na Ciebie – i liczy Twoje powtórzenia.</li>
+        <li><strong>Bezpieczne progresje</strong> – periodizacja treningu zapobiega stagnacji i przetrenowaniu.</li>
+      </ul>
+      <a class="btn" href="#kontakt" style="margin-top:24px;">Dopasuj trenera do siebie</a>
+    </div>
+    <img src="assets/trainer.png" alt="Trener personalny prowadzi trening z klientką">
+  </div>
+</section>
+
+<section class="section" id="odzywianie">
+  <div class="container nutrition-grid">
+    <div>
+      <h2>Odżywianie sportowców – paliwo do treningu</h2>
+      <p class="lead">Mięśnie buduje się w kuchni. Bez odpowiedniej diety nawet najlepszy plan treningowy nie da pełnych efektów. Oto fundamenty, które przekazujemy naszym podopiecznym:</p>
+      <div class="tips">
+        <div class="tip"><strong>Białko – fundament regeneracji</strong>Aktywni powinni dostarczać ok. 1,6–2,2 g białka na kg masy ciała dziennie. Świetne źródła: drób, jaja, ryby, nabiał, rośliny strączkowe.</div>
+        <div class="tip"><strong>Węglowodany = energia</strong> Do treningu sięgaj po kasze, ryż, pełnoziarniste pieczywo i owoce. Po treningu – szybkie węgle z owoców lub miodu wspierają odbudowę glikogenu.</div>
+        <div class="tip"><strong>Tłuszcze nie są wrogiem</strong>Orzechy, oliwa z oliwek, awokado i tłuste ryby regulują hormony i wspierają wchłanianie witamin rozpuszczalnych w tłuszczach.</div>
+        <div class="tip"><strong>Nawodnienie i elektrolity</strong> Pij regularnie w ciągu dnia, nie tylko na treningu. Podczas intensywnego wysiłku uzupełniaj sód i magnez – nawet 2% odwodnienia obniża wydolność.</div>
+      </div>
+    </div>
+    <img src="assets/nutrition.png" alt="Zdrowe odżywianie sportowca">
+  </div>
+</section>
+
+<section class="section pricing" id="cennik">
+  <div class="container">
+    <h2>Cennik</h2>
+    <p class="lead">Wybierz wariant dopasowany do swoich celów. Każdy karnet obejmuje dostęp do strefy siłowej, cardio i sauny.</p>
+    <div class="price-cards">
+      <div class="price-card">
+        <h3>Start</h3>
+        <div class="price">99 zł<small> / mies.</small></div>
+        <ul>
+          <li>Dostęp do siłowni 6:00–22:00</li>
+          <li>Strefa cardio i siłowa</li>
+          <li>Sauna (2 wejścia/mies.)</li>
+        </ul>
+        <a class="btn" href="#kontakt">Wybieram</a>
+      </div>
+      <div class="price-card featured">
+        <span class="tag">Najpopularniejszy</span>
+        <h3>Pro z trenerem</h3>
+        <div class="price">299 zł<small> / mies.</small></div>
+        <ul>
+          <li>Wszystko z pakietu Start</li>
+          <li>4 treningi personalne / mies.</li>
+          <li>Konsultacja żywieniowa</li>
+          <li>Sauna bez limitu</li>
+        </ul>
+        <a class="btn" href="#kontakt">Wybieram</a>
+      </div>
+      <div class="price-card">
+        <h3>Performance</h3>
+        <div class="price">499 zł<small> / mies.</small></div>
+        <ul>
+          <li>Wszystko z pakietu Pro</li>
+          <li>8 treningów personalnych / mies.</li>
+          <li>Indywidualny jadłospis sportowy</li>
+          <li>Pomiar składu ciała co 2 tyg.</li>
+        </ul>
+        <a class="btn" href="#kontakt">Wybieram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kontakt">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <span class="badge">Kontakt</span>
+      <h2>Wpadnij na trening</h2>
+      <p class="lead">Masz pytania? Zadzwoń albo napisz. W demo nie udajemy działającego formularza — kontakt jest bezpośredni.</p>
+      <p><strong>Adres:</strong> ul. Sportowa 12, 00-001 Warszawa</p>
+      <p><strong>Telefon:</strong> <a href="tel:+48123456789">+48 123 456 789</a></p>
+      <p><strong>E-mail:</strong> <a href="mailto:demo_powergym@gmail.com">demo_powergym@gmail.com</a></p>
+      <p><strong>Godziny:</strong> pon–pt 6:00–23:00, sob–nd 8:00–21:00</p>
+    </div>
+    <div class="contact-visual">
+      <div class="contact-visual-box">
+        <span class="badge">PowerGym</span>
+        <h3>Trening, który ma plan.</h3>
+        <p>Siła, mobilność, kondycja i praca z trenerem — wybierz formę, która pasuje do Twojego celu.</p>
+        <div class="contact-links">
+          <a href="tel:+48123456789">Zadzwoń</a>
+          <a href="mailto:demo_powergym@gmail.com">Napisz e-mail</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">© 2026 PowerGym – strona demonstracyjna. Treści mają charakter poglądowy.</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+(function(){
+  const schedule = {
+    1: [
+      ["07:00","Trening funkcjonalny","45 min · sala funkcjonalna","Średni"],
+      ["09:00","Mobility","45 min · studio","Każdy"],
+      ["12:30","Zdrowy kręgosłup","50 min · studio","Każdy"],
+      ["17:30","Trening siłowy","60 min · strefa wolnych ciężarów","Średni"],
+      ["19:00","Stretching","45 min · studio","Łagodny"],
+      ["20:15","HIIT","45 min · strefa funkcjonalna","Zaawansowany"]
+    ],
+    2: [
+      ["07:30","Full Body","60 min · sala główna","Średni"],
+      ["10:00","Pilates","50 min · studio","Każdy"],
+      ["12:00","Zdrowy kręgosłup","50 min · studio","Każdy"],
+      ["18:00","Cross Training","60 min · strefa funkcjonalna","Zaawansowany"],
+      ["19:15","Mobility","45 min · studio","Każdy"],
+      ["20:30","Trening obwodowy","45 min · sala funkcjonalna","Średni"]
+    ],
+    3: [
+      ["07:00","Trening funkcjonalny","45 min · sala funkcjonalna","Średni"],
+      ["09:30","Zdrowy kręgosłup","50 min · studio","Każdy"],
+      ["11:30","Mobility","45 min · studio","Każdy"],
+      ["17:00","Pilates","50 min · studio","Każdy"],
+      ["19:00","Full Body","60 min · sala główna","Średni"],
+      ["20:15","Stretching","45 min · studio","Łagodny"]
+    ],
+    4: [
+      ["08:00","Mobility","45 min · studio","Każdy"],
+      ["10:30","Pilates","50 min · studio","Każdy"],
+      ["12:30","Zdrowy kręgosłup","50 min · studio","Każdy"],
+      ["18:00","Trening obwodowy","45 min · sala funkcjonalna","Średni"],
+      ["19:30","HIIT","45 min · strefa funkcjonalna","Zaawansowany"],
+      ["20:30","Stretching","45 min · studio","Łagodny"]
+    ],
+    5: [
+      ["07:00","Trening siłowy","60 min · strefa wolnych ciężarów","Średni"],
+      ["09:00","Mobility","45 min · studio","Każdy"],
+      ["12:00","Zdrowy kręgosłup","50 min · studio","Każdy"],
+      ["17:30","Full Body","60 min · sala główna","Każdy"],
+      ["19:00","Stretching","45 min · studio","Każdy"],
+      ["20:15","Cross Training","60 min · strefa funkcjonalna","Średni"]
+    ],
+    6: [
+      ["08:00","Mobility","45 min · studio","Każdy"],
+      ["09:00","Trening funkcjonalny","45 min · sala funkcjonalna","Każdy"],
+      ["11:00","Pilates","50 min · studio","Każdy"],
+      ["13:00","Cross Training","60 min · strefa funkcjonalna","Średni"],
+      ["15:00","Full Body","60 min · sala główna","Średni"],
+      ["16:00","Stretching","45 min · studio","Łagodny"]
+    ],
+    7: [
+      ["09:00","Mobility","45 min · studio","Każdy"],
+      ["10:00","Zdrowy kręgosłup","50 min · studio","Każdy"],
+      ["11:30","Pilates","50 min · studio","Każdy"],
+      ["13:00","Trening funkcjonalny","45 min · sala funkcjonalna","Średni"],
+      ["15:00","Full Body","60 min · sala główna","Średni"],
+      ["16:00","Stretching","45 min · studio","Łagodny"]
+    ]
+  };
+
+  const names = ["niedziela","poniedziałek","wtorek","środa","czwartek","piątek","sobota"];
+  const tabs = [...document.querySelectorAll(".day-tab")];
+  const list = document.getElementById("scheduleList");
+  const todayBox = document.getElementById("scheduleToday");
+  const now = new Date();
+  const jsDay = now.getDay();
+  const today = jsDay === 0 ? 7 : jsDay;
+
+  tabs.forEach(tab => {
+    const day = Number(tab.dataset.day);
+    const mondayOffset = (day - 1) - (today - 1);
+    const date = new Date(now);
+    date.setDate(now.getDate() + mondayOffset);
+    tab.querySelector(".day-date").textContent = date.getDate() + "." + String(date.getMonth()+1).padStart(2,"0");
+  });
+
+  function render(day){
+    tabs.forEach(tab => {
+      const active = Number(tab.dataset.day) === day;
+      tab.classList.toggle("active", active);
+      tab.setAttribute("aria-selected", active ? "true" : "false");
+    });
+    list.innerHTML = (schedule[day] || []).map(item => `
+      <div class="class-row">
+        <div class="class-time">${item[0]}</div>
+        <div><div class="class-name">${item[1]}</div><div class="class-meta">${item[2]}</div></div>
+        <div class="class-level">${item[3]}</div>
+      </div>
+    `).join("");
+  }
+
+  todayBox.innerHTML = 'Dzisiaj: <strong>' + names[jsDay] + ', ' +
+    String(now.getDate()).padStart(2,"0") + "." +
+    String(now.getMonth()+1).padStart(2,"0") + "." +
+    now.getFullYear() + '</strong>';
+
+  tabs.forEach(tab => tab.addEventListener("click", () => render(Number(tab.dataset.day))));
+  render(today);
+})();
+</script>
+
+</body>
+</html>
