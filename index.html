@@ -23,7 +23,7 @@
   img{max-width:100%;display:block;}
   .container{width:min(1100px,92%);margin:0 auto;}
   h2{font-size:2rem;margin-bottom:.6rem;}
-  .section{padding:70px 0;}
+  .section{padding:70px 0;scroll-margin-top:82px;}
   .lead{color:var(--muted);max-width:720px;}
 
   /* ---- header ---- */
@@ -157,6 +157,8 @@
     .class-row{grid-template-columns:64px 1fr;}
     .class-level{grid-column:2;justify-self:start;}
     .hero{min-height:620px;}
+    .hero::before{background-position:72% center;}
+    .section{scroll-margin-top:72px;}
     .hero .container{padding:60px 0;}
     .hero-copy{max-width:100%;}
     .hero h1{font-size:clamp(2.25rem,11vw,3.2rem);}
@@ -358,6 +360,16 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
+// Mobile navigation: close the menu after selecting a section.
+(function(){
+  const burger = document.getElementById('burger');
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (burger) burger.checked = false;
+    });
+  });
+})();
+
 (function(){
   const schedule = {
     1: [
