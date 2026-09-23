@@ -27,8 +27,8 @@
   .lead{color:var(--muted);max-width:720px;}
 
   /* ---- header ---- */
-  header{position:sticky;top:0;z-index:50;background:rgba(15,17,21,.95);backdrop-filter:blur(6px);}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  header{position:sticky;top:0;z-index:50;background:var(--dark);box-shadow:0 1px 0 var(--dark);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
   .logo{color:#fff;font-weight:800;font-size:1.35rem;letter-spacing:1px;text-decoration:none;}
   .logo span{color:var(--accent);}
   .menu{display:flex;gap:26px;list-style:none;}
@@ -38,7 +38,7 @@
   .burger-label{display:none;color:#fff;font-size:1.8rem;cursor:pointer;line-height:1;}
 
   /* ---- hero ---- */
-  .hero{position:relative;min-height:560px;display:flex;align-items:center;background:#0b0d10;color:#fff;overflow:hidden;}
+  .hero{position:relative;min-height:560px;scroll-margin-top:64px;display:flex;align-items:center;background:#0b0d10;color:#fff;overflow:hidden;}
   .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,9,12,.94) 0%,rgba(7,9,12,.82) 34%,rgba(7,9,12,.22) 66%,rgba(7,9,12,.08) 100%),url('assets/hero.png') center 22%/cover no-repeat;}
   .hero .container{position:relative;z-index:1;padding:72px 0;}
   .hero-copy{max-width:590px;text-align:left;}
@@ -127,9 +127,14 @@
   .class-level{font-size:.75rem;color:#d1d5db;border:1px solid #414754;border-radius:30px;padding:4px 9px;}
   .schedule-note{margin-top:16px;color:#9ca3af;font-size:.85rem;}
 
+  /* ---- one section per screen (desktop) ---- */
+  @media (min-width:901px) and (min-height:600px){
+    .hero{min-height:calc(100vh - 64px);}
+    .section{min-height:calc(100vh - 64px);display:flex;align-items:center;}
+  }
+
   /* ---- responsive ---- */
   @media (max-width:1050px){
-    .nav{position:relative;}
     .burger-label{display:block;}
     .menu{position:absolute;top:100%;left:0;right:0;background:var(--dark);flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .3s ease;box-shadow:0 12px 24px rgba(0,0,0,.25);}
     .menu li{padding:14px 5%;border-top:1px solid #262a33;}
@@ -158,7 +163,6 @@
     .class-level{grid-column:2;justify-self:start;}
     .hero{min-height:620px;}
     .hero::before{background-position:72% center;}
-    .section{scroll-margin-top:64px;}
     .hero .container{padding:60px 0;}
     .hero-copy{max-width:100%;}
     .hero h1{font-size:clamp(2.25rem,11vw,3.2rem);}
@@ -208,7 +212,7 @@
       <div class="card">
         <div class="icon">🏋️</div>
         <h3>Sprzęt najwyższej klasy</h3>
-        <p>Atlasów, wolne ciężary, hantle do 60 kg i strefa cardio z technologią podłączania smartwatchy.</p>
+        <p>Atlasy, wolne ciężary, hantle do 60 kg i strefa cardio z technologią podłączania smartwatchy.</p>
       </div>
       <div class="card">
         <div class="icon">🧑‍🏫</div>
@@ -258,12 +262,12 @@
     <div>
       <span class="badge">Najważniejsze na siłowni</span>
       <h2>Trener personalny – Twoja najlepsza inwestycja</h2>
-      <p style="color:#d1d5db;">Trening samodzielny często kończy się płaską stopą albo kontuzją. Dobry trener personalny to nie „wydatek", lecz skrót do wyników:</p>
+      <p style="color:#d1d5db;">Trening bez nadzoru często kończy się złą techniką, zastojem albo kontuzją. Dobry trener personalny to nie „wydatek", lecz skrót do wyników:</p>
       <ul>
         <li><strong>Technika przede wszystkim</strong> – poprawne wykonanie ćwiczeń chroni stawy i kręgosłup oraz przyspiesza postępy nawet o 30%.</li>
         <li><strong>Plan szyty na miarę</strong> – trener dobiera obciążenia, zakres powtórzeń i regenerację do Twojego celu: redukcja, masa czy siła.</li>
         <li><strong>Motywacja i rytm</strong> – umówiony trening to trening, którego nie odwołujesz. Ktoś liczy na Ciebie – i liczy Twoje powtórzenia.</li>
-        <li><strong>Bezpieczne progresje</strong> – periodizacja treningu zapobiega stagnacji i przetrenowaniu.</li>
+        <li><strong>Bezpieczne progresje</strong> – periodyzacja treningu zapobiega stagnacji i przetrenowaniu.</li>
       </ul>
       <a class="btn" href="#kontakt" style="margin-top:24px;">Dopasuj trenera do siebie</a>
     </div>
@@ -358,7 +362,6 @@
   <div class="container">© 2026 PowerGym – strona demonstracyjna. Treści mają charakter poglądowy.</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
 // Mobile navigation: close the menu after selecting a section.
 (function(){
