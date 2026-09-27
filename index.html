@@ -140,7 +140,10 @@
   /* ---- jedna sekcja = jeden ekran (desktop) ---- */
   @media (min-width:901px){
     .hero{min-height:calc(100svh - 64px);}
-    .section{min-height:calc(100svh - 64px);display:flex;align-items:flex-start;}
+    .section{min-height:calc(100svh - 64px);display:flex;align-items:flex-start;
+      padding:clamp(26px,4vh,70px) 0;}
+    .price-cards{margin-top:clamp(14px,2.4vh,40px);}
+    .price-card{padding:clamp(20px,2.8vh,34px) 26px;}
     .section>.container{margin-top:0;margin-bottom:0;}
     .trainer-grid img{height:clamp(300px,42vh,460px);object-position:center 8%;}
     .nutrition-grid img{height:clamp(280px,46vh,500px);object-position:center 40%;}
