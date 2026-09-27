@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
+<html lang="pl"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="PowerGym – nowoczesna siłownia z treningiem personalnym i poradnikiem żywienia sportowego.">
@@ -142,6 +142,13 @@
     .section{min-height:calc(100vh - 64px);display:flex;align-items:center;}
   }
 
+  /* ---- kontakt: tylko ta sekcja ma naturalną wysokość ---- */
+  #kontakt{
+    min-height:auto;
+    align-items:flex-start;
+    padding:48px 0 28px;
+  }
+
   /* ---- responsive ---- */
   @media (max-width:1050px){
     .burger-label{display:block;}
@@ -252,7 +259,7 @@
       </ul>
       <a class="btn" href="#kontakt" style="margin-top:24px;">Dopasuj trenera do siebie</a>
     </div>
-    <img src="assets/trainer.png" alt="Trener personalny prowadzi trening z klientką">
+    <img src="PowerGym%20%E2%80%93%20Twoja%20si%C5%82ownia,%20Tw%C3%B3j%20trener,%20Twoje%20wyniki_files/trainer_zTe2.png" alt="Trener personalny prowadzi trening z klientką">
   </div>
 </section>
 
@@ -264,21 +271,57 @@
         <h2>Zaplanuj swój trening</h2>
         <p class="lead">Wybierz dzień, żeby zobaczyć zajęcia. Aktualny dzień jest zaznaczany automatycznie na podstawie daty urządzenia.</p>
       </div>
-      <div class="schedule-today" id="scheduleToday">Dzisiaj: <strong>—</strong></div>
+      <div class="schedule-today" id="scheduleToday">Dzisiaj: <strong>niedziela, 27.09.2026</strong></div>
     </div>
 
     <div class="schedule-days" id="scheduleDays" aria-label="Wybór dnia tygodnia">
-      <button class="day-tab" data-day="1" type="button"><div class="day-name">Pon</div><div class="day-date">—</div></button>
-      <button class="day-tab" data-day="2" type="button"><div class="day-name">Wt</div><div class="day-date">—</div></button>
-      <button class="day-tab" data-day="3" type="button"><div class="day-name">Śr</div><div class="day-date">—</div></button>
-      <button class="day-tab" data-day="4" type="button"><div class="day-name">Czw</div><div class="day-date">—</div></button>
-      <button class="day-tab" data-day="5" type="button"><div class="day-name">Pt</div><div class="day-date">—</div></button>
-      <button class="day-tab" data-day="6" type="button"><div class="day-name">Sob</div><div class="day-date">—</div></button>
-      <button class="day-tab" data-day="7" type="button"><div class="day-name">Nd</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="1" type="button" aria-selected="false"><div class="day-name">Pon</div><div class="day-date">21.09</div></button>
+      <button class="day-tab" data-day="2" type="button" aria-selected="false"><div class="day-name">Wt</div><div class="day-date">22.09</div></button>
+      <button class="day-tab" data-day="3" type="button" aria-selected="false"><div class="day-name">Śr</div><div class="day-date">23.09</div></button>
+      <button class="day-tab" data-day="4" type="button" aria-selected="false"><div class="day-name">Czw</div><div class="day-date">24.09</div></button>
+      <button class="day-tab" data-day="5" type="button" aria-selected="false"><div class="day-name">Pt</div><div class="day-date">25.09</div></button>
+      <button class="day-tab" data-day="6" type="button" aria-selected="false"><div class="day-name">Sob</div><div class="day-date">26.09</div></button>
+      <button class="day-tab active" data-day="7" type="button" aria-selected="true"><div class="day-name">Nd</div><div class="day-date">27.09</div></button>
     </div>
 
     <div class="schedule-panel">
-      <div class="schedule-grid" id="scheduleList"></div>
+      <div class="schedule-grid" id="scheduleList">
+      <div class="class-row">
+        <div class="class-time">09:00</div>
+        <div><div class="class-name">Mobility</div><div class="class-meta">45 min · studio</div></div>
+        <div class="class-level">Każdy</div>
+      </div>
+    
+      <div class="class-row">
+        <div class="class-time">10:00</div>
+        <div><div class="class-name">Zdrowy kręgosłup</div><div class="class-meta">50 min · studio</div></div>
+        <div class="class-level">Każdy</div>
+      </div>
+    
+      <div class="class-row">
+        <div class="class-time">11:30</div>
+        <div><div class="class-name">Pilates</div><div class="class-meta">50 min · studio</div></div>
+        <div class="class-level">Każdy</div>
+      </div>
+    
+      <div class="class-row">
+        <div class="class-time">13:00</div>
+        <div><div class="class-name">Trening funkcjonalny</div><div class="class-meta">45 min · sala funkcjonalna</div></div>
+        <div class="class-level">Średni</div>
+      </div>
+    
+      <div class="class-row">
+        <div class="class-time">15:00</div>
+        <div><div class="class-name">Full Body</div><div class="class-meta">60 min · sala główna</div></div>
+        <div class="class-level">Średni</div>
+      </div>
+    
+      <div class="class-row">
+        <div class="class-time">16:00</div>
+        <div><div class="class-name">Stretching</div><div class="class-meta">45 min · studio</div></div>
+        <div class="class-level">Łagodny</div>
+      </div>
+    </div>
       <p class="schedule-note">* Grafik demonstracyjny. Zajęcia są uporządkowane chronologicznie, a dzisiejszy dzień zaznacza się automatycznie.</p>
     </div>
   </div>
@@ -296,7 +339,7 @@
         <div class="tip"><strong>Nawodnienie i elektrolity</strong> Pij regularnie w ciągu dnia, nie tylko na treningu. Podczas intensywnego wysiłku uzupełniaj sód i magnez – nawet 2% odwodnienia obniża wydolność.</div>
       </div>
     </div>
-    <img src="assets/nutrition.png" alt="Zdrowe odżywianie sportowca">
+    <img src="PowerGym%20%E2%80%93%20Twoja%20si%C5%82ownia,%20Tw%C3%B3j%20trener,%20Twoje%20wyniki_files/nutrition_zTe2.png" alt="Zdrowe odżywianie sportowca">
   </div>
 </section>
 
@@ -483,5 +526,6 @@
 })();
 </script>
 
-</body>
-</html>
+
+
+</body></html>
