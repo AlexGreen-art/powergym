@@ -1,19 +1,10 @@
 <!DOCTYPE html>
-<html lang="pl"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="pl">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="PowerGym – nowoczesna siłownia z treningiem personalnym i poradnikiem żywienia sportowego.">
 <title>PowerGym – Twoja siłownia, Twój trener, Twoje wyniki</title>
-<meta property="og:title" content="PowerGym — Twoja siłownia, Twój trener, Twoje wyniki">
-<meta property="og:description" content="Grafik zajęć na bieżący tydzień i cennik podany wprost. Trening personalny i poradnik żywienia.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="pl_PL">
-<meta property="og:image" content="https://alexgreen-art.github.io/powergym/assets/hero.png">
-<meta property="og:image:width" content="1536">
-<meta property="og:image:height" content="1024">
-<meta property="og:url" content="https://alexgreen-art.github.io/powergym/">
-<link rel="canonical" href="https://alexgreen-art.github.io/powergym/">
 <style>
   :root{
     --accent:#e63946;
@@ -27,17 +18,17 @@
     --shadow:0 10px 30px rgba(0,0,0,.15);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{font-family:'Segoe UI',Arial,sans-serif;color:var(--text);background:#fff;line-height:1.6;overflow-x:hidden;}
+  html{scroll-behavior:smooth;scroll-padding-top:78px;}
+  body{font-family:'Segoe UI',Arial,sans-serif;color:var(--text);background:var(--dark);line-height:1.6;overflow-x:hidden;margin:0;padding:0;}
   img{max-width:100%;display:block;}
   .container{width:min(1100px,92%);margin:0 auto;}
   h2{font-size:2rem;margin-bottom:.6rem;}
-  .section{padding:70px 0;scroll-margin-top:64px;}
+  .section{padding:70px 0;scroll-margin-top:0;}
   .lead{color:var(--muted);max-width:720px;}
 
   /* ---- header ---- */
-  header{position:sticky;top:0;z-index:50;background:var(--dark);box-shadow:0 1px 0 var(--dark);}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  header{position:sticky;top:0;z-index:50;background:rgba(15,17,21,.95);backdrop-filter:blur(6px);display:block;border:0;outline:0;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
   .logo{color:#fff;font-weight:800;font-size:1.35rem;letter-spacing:1px;text-decoration:none;}
   .logo span{color:var(--accent);}
   .menu{display:flex;gap:26px;list-style:none;}
@@ -47,7 +38,7 @@
   .burger-label{display:none;color:#fff;font-size:1.8rem;cursor:pointer;line-height:1;}
 
   /* ---- hero ---- */
-  .hero{position:relative;min-height:560px;scroll-margin-top:64px;display:flex;align-items:center;background:#0b0d10;color:#fff;overflow:hidden;}
+  .hero{position:relative;min-height:560px;display:flex;align-items:center;background:#0b0d10;color:#fff;overflow:hidden;}
   .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,9,12,.94) 0%,rgba(7,9,12,.82) 34%,rgba(7,9,12,.22) 66%,rgba(7,9,12,.08) 100%),url('assets/hero.png') center 22%/cover no-repeat;}
   .hero .container{position:relative;z-index:1;padding:72px 0;}
   .hero-copy{max-width:590px;text-align:left;}
@@ -136,21 +127,9 @@
   .class-level{font-size:.75rem;color:#d1d5db;border:1px solid #414754;border-radius:30px;padding:4px 9px;}
   .schedule-note{margin-top:16px;color:#9ca3af;font-size:.85rem;}
 
-  /* ---- one section per screen (desktop) ---- */
-  @media (min-width:901px){
-    .hero{min-height:calc(100vh - 64px);}
-    .section{min-height:calc(100vh - 64px);display:flex;align-items:center;}
-  }
-
-  /* ---- kontakt: tylko ta sekcja ma naturalną wysokość ---- */
-  #kontakt{
-    min-height:auto;
-    align-items:flex-start;
-    padding:48px 0 28px;
-  }
-
   /* ---- responsive ---- */
   @media (max-width:1050px){
+    .nav{position:relative;}
     .burger-label{display:block;}
     .menu{position:absolute;top:100%;left:0;right:0;background:var(--dark);flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .3s ease;box-shadow:0 12px 24px rgba(0,0,0,.25);}
     .menu li{padding:14px 5%;border-top:1px solid #262a33;}
@@ -179,6 +158,7 @@
     .class-level{grid-column:2;justify-self:start;}
     .hero{min-height:620px;}
     .hero::before{background-position:72% center;}
+    .section{scroll-margin-top:0;}
     .hero .container{padding:60px 0;}
     .hero-copy{max-width:100%;}
     .hero h1{font-size:clamp(2.25rem,11vw,3.2rem);}
@@ -228,7 +208,7 @@
       <div class="card">
         <div class="icon">🏋️</div>
         <h3>Sprzęt najwyższej klasy</h3>
-        <p>Atlasy, wolne ciężary, hantle do 60 kg i strefa cardio z technologią podłączania smartwatchy.</p>
+        <p>Atlasów, wolne ciężary, hantle do 60 kg i strefa cardio z technologią podłączania smartwatchy.</p>
       </div>
       <div class="card">
         <div class="icon">🧑‍🏫</div>
@@ -245,24 +225,6 @@
 
 </section>
 
-<section class="section trainer" id="trener">
-  <div class="container trainer-grid">
-    <div>
-      <span class="badge">Najważniejsze na siłowni</span>
-      <h2>Trener personalny – Twoja najlepsza inwestycja</h2>
-      <p style="color:#d1d5db;">Trening bez nadzoru często kończy się złą techniką, zastojem albo kontuzją. Dobry trener personalny to nie „wydatek", lecz skrót do wyników:</p>
-      <ul>
-        <li><strong>Technika przede wszystkim</strong> – poprawne wykonanie ćwiczeń chroni stawy i kręgosłup oraz przyspiesza postępy nawet o 30%.</li>
-        <li><strong>Plan szyty na miarę</strong> – trener dobiera obciążenia, zakres powtórzeń i regenerację do Twojego celu: redukcja, masa czy siła.</li>
-        <li><strong>Motywacja i rytm</strong> – umówiony trening to trening, którego nie odwołujesz. Ktoś liczy na Ciebie – i liczy Twoje powtórzenia.</li>
-        <li><strong>Bezpieczne progresje</strong> – periodyzacja treningu zapobiega stagnacji i przetrenowaniu.</li>
-      </ul>
-      <a class="btn" href="#kontakt" style="margin-top:24px;">Dopasuj trenera do siebie</a>
-    </div>
-    <img src="PowerGym%20%E2%80%93%20Twoja%20si%C5%82ownia,%20Tw%C3%B3j%20trener,%20Twoje%20wyniki_files/trainer_zTe2.png" alt="Trener personalny prowadzi trening z klientką">
-  </div>
-</section>
-
 <section class="section schedule" id="grafik">
   <div class="container">
     <div class="schedule-head">
@@ -271,59 +233,41 @@
         <h2>Zaplanuj swój trening</h2>
         <p class="lead">Wybierz dzień, żeby zobaczyć zajęcia. Aktualny dzień jest zaznaczany automatycznie na podstawie daty urządzenia.</p>
       </div>
-      <div class="schedule-today" id="scheduleToday">Dzisiaj: <strong>niedziela, 27.09.2026</strong></div>
+      <div class="schedule-today" id="scheduleToday">Dzisiaj: <strong>—</strong></div>
     </div>
 
     <div class="schedule-days" id="scheduleDays" aria-label="Wybór dnia tygodnia">
-      <button class="day-tab" data-day="1" type="button" aria-selected="false"><div class="day-name">Pon</div><div class="day-date">21.09</div></button>
-      <button class="day-tab" data-day="2" type="button" aria-selected="false"><div class="day-name">Wt</div><div class="day-date">22.09</div></button>
-      <button class="day-tab" data-day="3" type="button" aria-selected="false"><div class="day-name">Śr</div><div class="day-date">23.09</div></button>
-      <button class="day-tab" data-day="4" type="button" aria-selected="false"><div class="day-name">Czw</div><div class="day-date">24.09</div></button>
-      <button class="day-tab" data-day="5" type="button" aria-selected="false"><div class="day-name">Pt</div><div class="day-date">25.09</div></button>
-      <button class="day-tab" data-day="6" type="button" aria-selected="false"><div class="day-name">Sob</div><div class="day-date">26.09</div></button>
-      <button class="day-tab active" data-day="7" type="button" aria-selected="true"><div class="day-name">Nd</div><div class="day-date">27.09</div></button>
+      <button class="day-tab" data-day="1" type="button"><div class="day-name">Pon</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="2" type="button"><div class="day-name">Wt</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="3" type="button"><div class="day-name">Śr</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="4" type="button"><div class="day-name">Czw</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="5" type="button"><div class="day-name">Pt</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="6" type="button"><div class="day-name">Sob</div><div class="day-date">—</div></button>
+      <button class="day-tab" data-day="7" type="button"><div class="day-name">Nd</div><div class="day-date">—</div></button>
     </div>
 
     <div class="schedule-panel">
-      <div class="schedule-grid" id="scheduleList">
-      <div class="class-row">
-        <div class="class-time">09:00</div>
-        <div><div class="class-name">Mobility</div><div class="class-meta">45 min · studio</div></div>
-        <div class="class-level">Każdy</div>
-      </div>
-    
-      <div class="class-row">
-        <div class="class-time">10:00</div>
-        <div><div class="class-name">Zdrowy kręgosłup</div><div class="class-meta">50 min · studio</div></div>
-        <div class="class-level">Każdy</div>
-      </div>
-    
-      <div class="class-row">
-        <div class="class-time">11:30</div>
-        <div><div class="class-name">Pilates</div><div class="class-meta">50 min · studio</div></div>
-        <div class="class-level">Każdy</div>
-      </div>
-    
-      <div class="class-row">
-        <div class="class-time">13:00</div>
-        <div><div class="class-name">Trening funkcjonalny</div><div class="class-meta">45 min · sala funkcjonalna</div></div>
-        <div class="class-level">Średni</div>
-      </div>
-    
-      <div class="class-row">
-        <div class="class-time">15:00</div>
-        <div><div class="class-name">Full Body</div><div class="class-meta">60 min · sala główna</div></div>
-        <div class="class-level">Średni</div>
-      </div>
-    
-      <div class="class-row">
-        <div class="class-time">16:00</div>
-        <div><div class="class-name">Stretching</div><div class="class-meta">45 min · studio</div></div>
-        <div class="class-level">Łagodny</div>
-      </div>
-    </div>
+      <div class="schedule-grid" id="scheduleList"></div>
       <p class="schedule-note">* Grafik demonstracyjny. Zajęcia są uporządkowane chronologicznie, a dzisiejszy dzień zaznacza się automatycznie.</p>
     </div>
+  </div>
+</section>
+
+<section class="section trainer" id="trener">
+  <div class="container trainer-grid">
+    <div>
+      <span class="badge">Najważniejsze na siłowni</span>
+      <h2>Trener personalny – Twoja najlepsza inwestycja</h2>
+      <p style="color:#d1d5db;">Trening samodzielny często kończy się płaską stopą albo kontuzją. Dobry trener personalny to nie „wydatek", lecz skrót do wyników:</p>
+      <ul>
+        <li><strong>Technika przede wszystkim</strong> – poprawne wykonanie ćwiczeń chroni stawy i kręgosłup oraz przyspiesza postępy nawet o 30%.</li>
+        <li><strong>Plan szyty na miarę</strong> – trener dobiera obciążenia, zakres powtórzeń i regenerację do Twojego celu: redukcja, masa czy siła.</li>
+        <li><strong>Motywacja i rytm</strong> – umówiony trening to trening, którego nie odwołujesz. Ktoś liczy na Ciebie – i liczy Twoje powtórzenia.</li>
+        <li><strong>Bezpieczne progresje</strong> – periodizacja treningu zapobiega stagnacji i przetrenowaniu.</li>
+      </ul>
+      <a class="btn" href="#kontakt" style="margin-top:24px;">Dopasuj trenera do siebie</a>
+    </div>
+    <img src="assets/trainer.png" alt="Trener personalny prowadzi trening z klientką">
   </div>
 </section>
 
@@ -339,7 +283,7 @@
         <div class="tip"><strong>Nawodnienie i elektrolity</strong> Pij regularnie w ciągu dnia, nie tylko na treningu. Podczas intensywnego wysiłku uzupełniaj sód i magnez – nawet 2% odwodnienia obniża wydolność.</div>
       </div>
     </div>
-    <img src="PowerGym%20%E2%80%93%20Twoja%20si%C5%82ownia,%20Tw%C3%B3j%20trener,%20Twoje%20wyniki_files/nutrition_zTe2.png" alt="Zdrowe odżywianie sportowca">
+    <img src="assets/nutrition.png" alt="Zdrowe odżywianie sportowca">
   </div>
 </section>
 
@@ -414,6 +358,7 @@
   <div class="container">© 2026 PowerGym – strona demonstracyjna. Treści mają charakter poglądowy.</div>
 </footer>
 
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
 // Mobile navigation: close the menu after selecting a section.
 (function(){
@@ -526,6 +471,5 @@
 })();
 </script>
 
-
-
-</body></html>
+</body>
+</html>
