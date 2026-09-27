@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="PowerGym – nowoczesna siłownia z treningiem personalnym i poradnikiem żywienia sportowego.">
 <title>PowerGym – Twoja siłownia, Twój trener, Twoje wyniki</title>
+<meta property="og:title" content="PowerGym — Twoja siłownia, Twój trener, Twoje wyniki">
+<meta property="og:description" content="Grafik zajęć na bieżący tydzień i cennik podany wprost. Trening personalny i poradnik żywienia.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:image" content="https://alexgreen-art.github.io/powergym/assets/hero.jpg">
+<meta property="og:image:width" content="1536">
+<meta property="og:image:height" content="1024">
+<meta property="og:url" content="https://alexgreen-art.github.io/powergym/">
+<link rel="canonical" href="https://alexgreen-art.github.io/powergym/">
 <style>
   :root{
     --accent:#e63946;
@@ -18,8 +27,8 @@
     --shadow:0 10px 30px rgba(0,0,0,.15);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;scroll-padding-top:78px;}
-  body{font-family:'Segoe UI',Arial,sans-serif;color:var(--text);background:var(--dark);line-height:1.6;overflow-x:hidden;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:64px;}
+  body{font-family:'Segoe UI',Arial,sans-serif;color:var(--text);background:#fff;line-height:1.6;overflow-x:hidden;margin:0;padding:0;}
   img{max-width:100%;display:block;}
   .container{width:min(1100px,92%);margin:0 auto;}
   h2{font-size:2rem;margin-bottom:.6rem;}
@@ -28,7 +37,7 @@
 
   /* ---- header ---- */
   header{position:sticky;top:0;z-index:50;background:rgba(15,17,21,.95);backdrop-filter:blur(6px);display:block;border:0;outline:0;}
-  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
   .logo{color:#fff;font-weight:800;font-size:1.35rem;letter-spacing:1px;text-decoration:none;}
   .logo span{color:var(--accent);}
   .menu{display:flex;gap:26px;list-style:none;}
@@ -39,7 +48,7 @@
 
   /* ---- hero ---- */
   .hero{position:relative;min-height:560px;display:flex;align-items:center;background:#0b0d10;color:#fff;overflow:hidden;}
-  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,9,12,.94) 0%,rgba(7,9,12,.82) 34%,rgba(7,9,12,.22) 66%,rgba(7,9,12,.08) 100%),url('assets/hero.png') center 22%/cover no-repeat;}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,9,12,.94) 0%,rgba(7,9,12,.82) 34%,rgba(7,9,12,.22) 66%,rgba(7,9,12,.08) 100%),url('assets/hero.jpg') center 22%/cover no-repeat;}
   .hero .container{position:relative;z-index:1;padding:72px 0;}
   .hero-copy{max-width:590px;text-align:left;}
   .hero h1{font-size:clamp(2.5rem,5vw,4.2rem);line-height:1.06;letter-spacing:-1.5px;}
@@ -96,7 +105,7 @@
   .contact-info a{color:inherit;text-decoration:none;}
   .contact-info a:hover{color:var(--accent);text-decoration:underline;}
 
-  .contact-visual{position:relative;min-height:420px;border-radius:var(--radius);overflow:hidden;background:linear-gradient(90deg,rgba(15,17,21,.92),rgba(15,17,21,.28)),url("assets/trainer.png") center/cover no-repeat;box-shadow:var(--shadow);display:flex;align-items:flex-end;padding:32px;color:#fff;}
+  .contact-visual{position:relative;min-height:420px;border-radius:var(--radius);overflow:hidden;background:linear-gradient(90deg,rgba(15,17,21,.92),rgba(15,17,21,.28)),url("assets/trainer.jpg") center/cover no-repeat;box-shadow:var(--shadow);display:flex;align-items:flex-end;padding:32px;color:#fff;}
   .contact-visual-box{max-width:390px;}
   .contact-visual h3{font-size:1.7rem;margin-bottom:10px;}
   .contact-visual p{color:#e5e7eb;margin-bottom:18px;}
@@ -126,6 +135,24 @@
   .class-meta{font-size:.82rem;color:#9ca3af;margin-top:2px;}
   .class-level{font-size:.75rem;color:#d1d5db;border:1px solid #414754;border-radius:30px;padding:4px 9px;}
   .schedule-note{margin-top:16px;color:#9ca3af;font-size:.85rem;}
+
+
+  /* ---- jedna sekcja = jeden ekran (desktop) ---- */
+  @media (min-width:901px){
+    .hero{min-height:calc(100svh - 64px);}
+    .section{min-height:calc(100svh - 64px);display:flex;align-items:flex-start;}
+    .section>.container{margin-top:0;margin-bottom:0;}
+    .trainer-grid img{height:clamp(300px,42vh,460px);object-position:center 8%;}
+    .nutrition-grid img{height:clamp(280px,46vh,500px);object-position:center 40%;}
+  }
+
+
+  /* ---- oznaczenie demo ---- */
+
+
+  @media (min-width:901px){
+    #kontakt{min-height:calc(100svh - 64px - 75px);}
+  }
 
   /* ---- responsive ---- */
   @media (max-width:1050px){
@@ -208,7 +235,7 @@
       <div class="card">
         <div class="icon">🏋️</div>
         <h3>Sprzęt najwyższej klasy</h3>
-        <p>Atlasów, wolne ciężary, hantle do 60 kg i strefa cardio z technologią podłączania smartwatchy.</p>
+        <p>Atlasy, wolne ciężary, hantle do 60 kg i strefa cardio z technologią podłączania smartwatchy.</p>
       </div>
       <div class="card">
         <div class="icon">🧑‍🏫</div>
@@ -223,6 +250,24 @@
     </div>
   </div>
 
+</section>
+
+<section class="section trainer" id="trener">
+  <div class="container trainer-grid">
+    <div>
+      <span class="badge">Najważniejsze na siłowni</span>
+      <h2>Trener personalny – Twoja najlepsza inwestycja</h2>
+      <p style="color:#d1d5db;">Trening bez nadzoru często kończy się złą techniką, zastojem albo kontuzją. Dobry trener personalny to nie „wydatek", lecz skrót do wyników:</p>
+      <ul>
+        <li><strong>Technika przede wszystkim</strong> – poprawne wykonanie ćwiczeń chroni stawy i kręgosłup oraz przyspiesza postępy nawet o 30%.</li>
+        <li><strong>Plan szyty na miarę</strong> – trener dobiera obciążenia, zakres powtórzeń i regenerację do Twojego celu: redukcja, masa czy siła.</li>
+        <li><strong>Motywacja i rytm</strong> – umówiony trening to trening, którego nie odwołujesz. Ktoś liczy na Ciebie – i liczy Twoje powtórzenia.</li>
+        <li><strong>Bezpieczne progresje</strong> – periodyzacja treningu zapobiega stagnacji i przetrenowaniu.</li>
+      </ul>
+      <a class="btn" href="#kontakt" style="margin-top:24px;">Dopasuj trenera do siebie</a>
+    </div>
+    <img src="assets/trainer.jpg" width="1076" height="1024" loading="lazy" decoding="async" alt="Trener personalny prowadzi trening z klientką">
+  </div>
 </section>
 
 <section class="section schedule" id="grafik">
@@ -253,23 +298,7 @@
   </div>
 </section>
 
-<section class="section trainer" id="trener">
-  <div class="container trainer-grid">
-    <div>
-      <span class="badge">Najważniejsze na siłowni</span>
-      <h2>Trener personalny – Twoja najlepsza inwestycja</h2>
-      <p style="color:#d1d5db;">Trening samodzielny często kończy się płaską stopą albo kontuzją. Dobry trener personalny to nie „wydatek", lecz skrót do wyników:</p>
-      <ul>
-        <li><strong>Technika przede wszystkim</strong> – poprawne wykonanie ćwiczeń chroni stawy i kręgosłup oraz przyspiesza postępy nawet o 30%.</li>
-        <li><strong>Plan szyty na miarę</strong> – trener dobiera obciążenia, zakres powtórzeń i regenerację do Twojego celu: redukcja, masa czy siła.</li>
-        <li><strong>Motywacja i rytm</strong> – umówiony trening to trening, którego nie odwołujesz. Ktoś liczy na Ciebie – i liczy Twoje powtórzenia.</li>
-        <li><strong>Bezpieczne progresje</strong> – periodizacja treningu zapobiega stagnacji i przetrenowaniu.</li>
-      </ul>
-      <a class="btn" href="#kontakt" style="margin-top:24px;">Dopasuj trenera do siebie</a>
-    </div>
-    <img src="assets/trainer.png" alt="Trener personalny prowadzi trening z klientką">
-  </div>
-</section>
+
 
 <section class="section" id="odzywianie">
   <div class="container nutrition-grid">
@@ -283,7 +312,7 @@
         <div class="tip"><strong>Nawodnienie i elektrolity</strong> Pij regularnie w ciągu dnia, nie tylko na treningu. Podczas intensywnego wysiłku uzupełniaj sód i magnez – nawet 2% odwodnienia obniża wydolność.</div>
       </div>
     </div>
-    <img src="assets/nutrition.png" alt="Zdrowe odżywianie sportowca">
+    <img src="assets/nutrition.jpg" width="1100" height="887" loading="lazy" decoding="async" alt="Zdrowe odżywianie sportowca">
   </div>
 </section>
 
@@ -355,10 +384,9 @@
 </section>
 
 <footer>
-  <div class="container">© 2026 PowerGym – strona demonstracyjna. Treści mają charakter poglądowy.</div>
+  <div class="container">© 2026 PowerGym — strona demonstracyjna. Firma, dane kontaktowe, grafik i cennik są fikcyjne. Projekt: AlexGreen-Art.</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
 // Mobile navigation: close the menu after selecting a section.
 (function(){
